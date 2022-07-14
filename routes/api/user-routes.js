@@ -76,6 +76,12 @@ router.put("/:id", (req, res) => {
     res.status(500).json(err);
   })
 });
+/*
+equivalent to the SQL query
+UPDATE users
+SET username = "Lernantino", email = "lernantino@gmail.com", password = "newPassword1234"
+WHERE id = 1;
+ */
 
 // DELETE /api/users/1
 router.delete("/:id", (req, res) => {});
