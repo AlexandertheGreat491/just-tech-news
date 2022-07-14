@@ -31,6 +31,7 @@ router.get("/:id", (req, res) => {
     res.status(500).json(err);
   });
 });
+//equivalent of the SQL query SELECT * FROM users WHERE id = 1
 
 // POST /api/users
 router.post("/", (req, res) => {});
