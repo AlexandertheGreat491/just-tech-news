@@ -64,17 +64,18 @@ router.put("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-  }).then((dbUserData) => {
-    if (!dbUserData[0]) {
-      res.status(404).json({ message: "No user found with this id" });
-      return;
-    }
-    res.json(dbUserData);
   })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  })
+    .then((dbUserData) => {
+      if (!dbUserData[0]) {
+        res.status(404).json({ message: "No user found with this id" });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 /*
 equivalent to the SQL query
@@ -84,6 +85,23 @@ WHERE id = 1;
  */
 
 // DELETE /api/users/1
-router.delete("/:id", (req, res) => {});
+router.delete("/:id", (req, res) => {
+  User.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "No user found with this id" });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;
