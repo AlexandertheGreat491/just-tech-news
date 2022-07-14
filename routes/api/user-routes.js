@@ -4,6 +4,7 @@ const { User } = require("../../models");
 // GET /api/users
 router.get("/", (req, res) => {
   //access User model and run .findAll() method
+  //by excluding the password the password information for users is protected
   User.findAll({
     attributes: { exclude: ["password"] }
   })
