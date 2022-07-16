@@ -76,35 +76,13 @@ router.post("/", (req, res) => {
 
 //PUT /api/posts/upvote
 router.put("/upvote", (req, res) => {
-  Vote.create({
-    user_id: req.body.user_id,
-    post_id: req.body.post_id
-  })
-    .then(() => {
-      //then find post just voted on
-      return Post.findOne({
-        where: {
-          id: req.body.post_id
-        },
-        attributes: [
-          "id",
-          "post_url",
-          "title",
-          "create_at",
-          [
-            sequelize.literal(
-              "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id"
-            ),
-            "vote_count",
-          ],
-        ],
-      });
-    })
-    .then((dbPostData) => res.json(dbPostData))
-    .catch((err) => {
+  // custom static method created in models/Post.js
+  Post.upvote(req.body, {Vote})
+    .then(updatedPostData => res.json(updatedPostData))
+    .catch(err => {
       console.log(err);
       res.status(400).json(err);
-    });
+    });  
 });
 
 router.delete("/:id", (req, res) => {
