@@ -2,12 +2,12 @@ const router = require('express').Router();
 
 router.get('/', (req, res) => {
     res.render('homepage', {
-        id: 1, 
-        post_url: 'https://handlebars.js.com/guide/',
+        id: 1,
+        post_url: 'https://handlebarsjs.com/guide',
         title: 'Handlebars Docs',
-        created_at: new Data(),
-        vote_count: 10, 
-        comments: [{}, {}],
+        created_at: new Date(),
+        vote_count: 10,
+        coments: [{}, {}],
         user: {
             username: 'test_user'
         }
