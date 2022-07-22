@@ -4,3 +4,4 @@ function signupFormHandler(event) {
 }
 
 //listens fro the submit even from the form
+document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
