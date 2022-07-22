@@ -25,5 +25,30 @@ async function signupFormHandler(event) {
     }
 }
 
+//this function will POST the email and the password from the form
+async function loginFormHandler(event) {
+    event.preventDefault();
+
+    const email = document.querySelector('#email-login').value.trim();
+    const password = document.querySelector('#password-login').value.trim();
+
+    if (email && password) {
+        const response = await fetch('/api/users/login', {
+            method: 'post',
+            body: JSON.stringify({
+                email, 
+                password
+            }),
+            headers: {'Content-Type': 'application/json'}
+        });
+
+        if (response.ok) {
+            document.location.replace('/');
+        } else {
+            alert(response.statusText);
+        }
+    }
+}
+
 //listens fro the submit even from the form
 document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
