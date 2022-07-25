@@ -1,4 +1,4 @@
-const {format_date} = require('../utils/helpers');
+const {format_date, format_plural} = require('../utils/helpers');
 
 //this test ensures that the format_date() takes Date() objects & returns dates in MM/DD/YYYY format
 test('format_data() returns a date string', () => {

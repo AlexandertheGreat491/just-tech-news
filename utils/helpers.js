@@ -1,3 +1,4 @@
+//format_date method
 module.exports = {
     format_date: date => {
       return `${new Date(date).getMonth() + 1}/${new Date(date).getDate()}/${new Date(
@@ -21,3 +22,18 @@ module.exports = {
     }
   };
   
+  //format_plural() method
+  module.exports = {
+    format_date: date => {
+      return `${new Date(date).getMonth() + 1}/${new Date(date).getDate()}/${new Date(
+        date
+      ).getFullYear()}`;
+    },
+    format_plural: (word, amount) => {
+      if (amount !==1) {
+        return `${word}s`;
+      }
+
+      return word;
+    }
+  }
