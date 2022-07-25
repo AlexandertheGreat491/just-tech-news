@@ -76,18 +76,20 @@ router.get('/post/:id', (req, res) => {
         return;
       }
 
+      // serialize the data
       const post = dbPostData.get({ plain: true });
 
-      res.render('single-post', {
-        post,
-        loggedIn: req.session.loggedIn
-      });
+      // pass data to template
+      res.render('single-post', { post });
     })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
+  
+    
+
 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
