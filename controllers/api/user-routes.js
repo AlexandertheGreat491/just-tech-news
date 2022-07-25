@@ -103,7 +103,7 @@ router.post("/login", (req, res) => {
       });
     });
     
-})
+});
 
 
 router.put("/:id", (req, res) => {
